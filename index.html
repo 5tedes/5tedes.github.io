@@ -1,13 +1,289 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>My GitHub Pages</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My GitHub Pages - Learning Resources</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 40px 20px;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        h1 {
+            text-align: center;
+            color: white;
+            margin-bottom: 20px;
+            font-size: 3em;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .subtitle {
+            text-align: center;
+            color: rgba(255,255,255,0.9);
+            margin-bottom: 50px;
+            font-size: 1.3em;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 25px;
+            margin-bottom: 40px;
+        }
+
+        .subject-card {
+            background: white;
+            border-radius: 15px;
+            padding: 25px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            transition: all 0.3s;
+            min-height: 200px;
+        }
+
+        .subject-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.4);
+        }
+
+        .subject-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 3px solid #667eea;
+        }
+
+        .subject-icon {
+            font-size: 2em;
+        }
+
+        .subject-title {
+            font-size: 1.5em;
+            color: #333;
+            font-weight: 700;
+        }
+
+        .links-list {
+            list-style: none;
+        }
+
+        .links-list li {
+            margin-bottom: 12px;
+        }
+
+        .resource-link {
+            display: flex;
+            align-items: center;
+            padding: 12px 15px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            text-decoration: none;
+            border-radius: 8px;
+            transition: all 0.3s;
+            font-weight: 600;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+
+        .resource-link:hover {
+            transform: translateX(5px);
+            box-shadow: 0 6px 12px rgba(0,0,0,0.2);
+        }
+
+        .resource-link::before {
+            content: "📚";
+            margin-right: 10px;
+            font-size: 1.2em;
+        }
+
+        .empty-state {
+            color: #999;
+            font-style: italic;
+            padding: 15px;
+            text-align: center;
+        }
+
+        .footer {
+            text-align: center;
+            color: white;
+            margin-top: 50px;
+            padding: 20px;
+            font-size: 1.1em;
+            opacity: 0.9;
+        }
+
+        .footer a {
+            color: white;
+            text-decoration: underline;
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2em;
+            }
+
+            .grid {
+                grid-template-columns: 1fr;
+            }
+
+            .subject-title {
+                font-size: 1.3em;
+            }
+        }
+
+        /* Color variations for different subjects */
+        .subject-card:nth-child(1) .subject-header { border-bottom-color: #FF6B6B; }
+        .subject-card:nth-child(1) .resource-link { background: linear-gradient(135deg, #FF6B6B 0%, #C92A2A 100%); }
+
+        .subject-card:nth-child(2) .subject-header { border-bottom-color: #4ECDC4; }
+        .subject-card:nth-child(2) .resource-link { background: linear-gradient(135deg, #4ECDC4 0%, #1098AD 100%); }
+
+        .subject-card:nth-child(3) .subject-header { border-bottom-color: #95E1D3; }
+        .subject-card:nth-child(3) .resource-link { background: linear-gradient(135deg, #95E1D3 0%, #38A3A5 100%); }
+
+        .subject-card:nth-child(4) .subject-header { border-bottom-color: #A8E6CF; }
+        .subject-card:nth-child(4) .resource-link { background: linear-gradient(135deg, #A8E6CF 0%, #56AB91 100%); }
+
+        .subject-card:nth-child(5) .subject-header { border-bottom-color: #FFD93D; }
+        .subject-card:nth-child(5) .resource-link { background: linear-gradient(135deg, #FFD93D 0%, #F4A261 100%); }
+
+        .subject-card:nth-child(6) .subject-header { border-bottom-color: #6BCB77; }
+        .subject-card:nth-child(6) .resource-link { background: linear-gradient(135deg, #6BCB77 0%, #2D6A4F 100%); }
+
+        .subject-card:nth-child(7) .subject-header { border-bottom-color: #4D96FF; }
+        .subject-card:nth-child(7) .resource-link { background: linear-gradient(135deg, #4D96FF 0%, #1E40AF 100%); }
+
+        .subject-card:nth-child(8) .subject-header { border-bottom-color: #9D84B7; }
+        .subject-card:nth-child(8) .resource-link { background: linear-gradient(135deg, #9D84B7 0%, #6B4E9B 100%); }
+
+        .subject-card:nth-child(9) .subject-header { border-bottom-color: #F48FB1; }
+        .subject-card:nth-child(9) .resource-link { background: linear-gradient(135deg, #F48FB1 0%, #C2185B 100%); }
+    </style>
 </head>
 <body>
-    <h1>My Published Projects</h1>
-    <ul>
-        <li><a href="https://5tedes.github.io/cyprus-history-flashcards/">Cyprus History</a></li>
-        <li><a href="https://5tedes.github.io/history-flashcards/">History Flashcards</a></li>
-    </ul>
+    <div class="container">
+        <h1>📖 Sophia Eliades - 1 D</h1>
+        <p class="subtitle">Revision Flashcards organized by subject</p>
+        
+        <div class="grid">
+            <!-- History -->
+            <div class="subject-card">
+                <div class="subject-header">
+                    <span class="subject-icon">🏛️</span>
+                    <h2 class="subject-title">History</h2>
+                </div>
+                <ul class="links-list">
+                    <li><a href="https://5tedes.github.io/history-flashcards/" class="resource-link" target="_blank" rel="noopener noreferrer">History Flashcards</a></li>
+                </ul>
+            </div>
+
+            <!-- Cyprus History -->
+            <div class="subject-card">
+                <div class="subject-header">
+                    <span class="subject-icon">🇨🇾</span>
+                    <h2 class="subject-title">Cyprus History</h2>
+                </div>
+                <ul class="links-list">
+                    <li><a href="https://5tedes.github.io/cyprus-history-flashcards/" class="resource-link" target="_blank" rel="noopener noreferrer">Cyprus History Flashcards</a></li>
+                </ul>
+            </div>
+
+            <!-- Science -->
+            <div class="subject-card">
+                <div class="subject-header">
+                    <span class="subject-icon">🔬</span>
+                    <h2 class="subject-title">Science</h2>
+                </div>
+                <ul class="links-list">
+                    <li class="empty-state">No resources yet</li>
+                </ul>
+            </div>
+
+            <!-- Environmental Science -->
+            <div class="subject-card">
+                <div class="subject-header">
+                    <span class="subject-icon">🌍</span>
+                    <h2 class="subject-title">Environmental Science</h2>
+                </div>
+                <ul class="links-list">
+                    <li class="empty-state">No resources yet</li>
+                </ul>
+            </div>
+
+            <!-- Computing -->
+            <div class="subject-card">
+                <div class="subject-header">
+                    <span class="subject-icon">💻</span>
+                    <h2 class="subject-title">Computing</h2>
+                </div>
+                <ul class="links-list">
+                    <li class="empty-state">No resources yet</li>
+                </ul>
+            </div>
+
+            <!-- Maths -->
+            <div class="subject-card">
+                <div class="subject-header">
+                    <span class="subject-icon">📐</span>
+                    <h2 class="subject-title">Maths</h2>
+                </div>
+                <ul class="links-list">
+                    <li class="empty-state">No resources yet</li>
+                </ul>
+            </div>
+
+            <!-- Greek -->
+            <div class="subject-card">
+                <div class="subject-header">
+                    <span class="subject-icon">🇬🇷</span>
+                    <h2 class="subject-title">Greek</h2>
+                </div>
+                <ul class="links-list">
+                    <li class="empty-state">No resources yet</li>
+                </ul>
+            </div>
+
+            <!-- English -->
+            <div class="subject-card">
+                <div class="subject-header">
+                    <span class="subject-icon">📝</span>
+                    <h2 class="subject-title">English</h2>
+                </div>
+                <ul class="links-list">
+                    <li class="empty-state">No resources yet</li>
+                </ul>
+            </div>
+
+            <!-- Additional English -->
+            <div class="subject-card">
+                <div class="subject-header">
+                    <span class="subject-icon">📚</span>
+                    <h2 class="subject-title">Additional English</h2>
+                </div>
+                <ul class="links-list">
+                    <li class="empty-state">No resources yet</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="footer">
+            <p>💡 Tip: Bookmark this page to quickly access all your study materials!</p>
+            <p>View on <a href="https://github.com/5tedes" target="_blank" rel="noopener noreferrer">GitHub</a></p>
+        </div>
+    </div>
 </body>
 </html>
