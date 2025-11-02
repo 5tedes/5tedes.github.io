@@ -117,6 +117,63 @@
             text-align: center;
         }
 
+        /* Special card for submission form */
+        .submission-card {
+            background: linear-gradient(135deg, #ffd93d 0%, #f4a261 100%);
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            transition: all 0.3s;
+            margin-bottom: 40px;
+            text-align: center;
+        }
+
+        .submission-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.4);
+        }
+
+        .submission-card h2 {
+            color: #333;
+            font-size: 1.8em;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+        }
+
+        .submission-card p {
+            color: #555;
+            font-size: 1.1em;
+            margin-bottom: 20px;
+        }
+
+        .submission-link {
+            display: inline-flex;
+            align-items: center;
+            padding: 15px 30px;
+            background: white;
+            color: #333;
+            text-decoration: none;
+            border-radius: 10px;
+            font-weight: 700;
+            font-size: 1.2em;
+            transition: all 0.3s;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+        }
+
+        .submission-link:hover {
+            transform: scale(1.05);
+            box-shadow: 0 6px 15px rgba(0,0,0,0.3);
+        }
+
+        .submission-link::before {
+            content: "✏️";
+            margin-right: 10px;
+            font-size: 1.3em;
+        }
+
         .footer {
             text-align: center;
             color: white;
@@ -142,6 +199,10 @@
 
             .subject-title {
                 font-size: 1.3em;
+            }
+
+            .submission-card h2 {
+                font-size: 1.5em;
             }
         }
 
@@ -307,6 +368,19 @@
                     <li><a href="https://5tedes.github.io/Music-flashcards/" class="resource-link" target="_blank" rel="noopener noreferrer">Music Flashcards</a></li>
                 </ul>
             </div>
+        </div>
+
+        <!-- Submission Form Card -->
+        <div class="submission-card">
+            <h2>
+                <span>📝</span>
+                Submit New Flashcards
+            </h2>
+            <p>Have new flashcards to add? Submit them here!</p>
+            <a href="https://5tedes.github.io/flashcard-tools/submit-flashcards.html" class="submission-link" target="_blank" rel="noopener noreferrer">
+                Create Flashcard
+            </a>
+        </div>
 
         <div class="footer">
             <p>💡 Tip: Bookmark this page to quickly access all your study materials!</p>
