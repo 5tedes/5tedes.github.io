@@ -38,6 +38,47 @@
             font-size: 1.3em;
         }
 
+        /* Important Dates Card */
+        .important-dates-card {
+            background: linear-gradient(135deg, #ff6b6b 0%, #ee5a6f 100%);
+            border-radius: 15px;
+            padding: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            transition: all 0.3s;
+            margin-bottom: 40px;
+            text-align: center;
+        }
+
+        .important-dates-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.4);
+        }
+
+        .important-dates-link {
+            display: inline-flex;
+            align-items: center;
+            padding: 15px 30px;
+            background: white;
+            color: #333;
+            text-decoration: none;
+            border-radius: 10px;
+            font-weight: 700;
+            font-size: 1.3em;
+            transition: all 0.3s;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+        }
+
+        .important-dates-link:hover {
+            transform: scale(1.05);
+            box-shadow: 0 6px 15px rgba(0,0,0,0.3);
+        }
+
+        .important-dates-link::before {
+            content: "📅";
+            margin-right: 10px;
+            font-size: 1.3em;
+        }
+
         .grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
@@ -80,14 +121,31 @@
 
         .links-list {
             list-style: none;
-            text-align: center;
         }
 
         .links-list li {
             margin-bottom: 12px;
         }
 
-        .resource-link {
+        /* Section Headers for Flashcards/Practice Tests */
+        .section-divider {
+            font-size: 0.85em;
+            font-weight: 700;
+            color: #666;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-top: 15px;
+            margin-bottom: 10px;
+            padding-left: 5px;
+            border-left: 4px solid #667eea;
+        }
+
+        .section-divider.practice-section {
+            border-left-color: #f4a261;
+        }
+
+        /* Flashcard Links */
+        .flashcard-link {
             display: flex;
             align-items: center;
             padding: 12px 15px;
@@ -100,15 +158,64 @@
             box-shadow: 0 4px 6px rgba(0,0,0,0.1);
         }
 
-        .resource-link:hover {
+        .flashcard-link:hover {
             transform: translateX(5px);
             box-shadow: 0 6px 12px rgba(0,0,0,0.2);
         }
 
-        .resource-link::before {
+        .flashcard-link::before {
             content: "📚";
             margin-right: 10px;
             font-size: 1.2em;
+        }
+
+        .flashcard-link::after {
+            content: "Flashcard";
+            margin-left: auto;
+            font-size: 0.75em;
+            background: rgba(255,255,255,0.2);
+            padding: 3px 8px;
+            border-radius: 4px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        /* Practice Test Links */
+        .practice-link {
+            display: flex;
+            align-items: center;
+            padding: 12px 15px;
+            background: linear-gradient(135deg, #f4a261 0%, #e76f51 100%);
+            color: white;
+            text-decoration: none;
+            border-radius: 8px;
+            transition: all 0.3s;
+            font-weight: 600;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            border: 2px solid rgba(255,255,255,0.3);
+        }
+
+        .practice-link:hover {
+            transform: translateX(5px);
+            box-shadow: 0 6px 12px rgba(0,0,0,0.2);
+        }
+
+        .practice-link::before {
+            content: "✏️";
+            margin-right: 10px;
+            font-size: 1.2em;
+        }
+
+        .practice-link::after {
+            content: "Practice Test";
+            margin-left: auto;
+            font-size: 0.75em;
+            background: rgba(255,255,255,0.3);
+            padding: 3px 8px;
+            border-radius: 4px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            font-weight: 700;
         }
 
         .empty-state {
@@ -205,53 +312,58 @@
             .submission-card h2 {
                 font-size: 1.5em;
             }
+
+            .flashcard-link::after,
+            .practice-link::after {
+                display: none;
+            }
         }
 
         /* Color variations for different subjects */
         .subject-card:nth-child(1) .subject-header { border-bottom-color: #FF6B6B; }
-        .subject-card:nth-child(1) .resource-link { background: linear-gradient(135deg, #FF6B6B 0%, #C92A2A 100%); }
+        .subject-card:nth-child(1) .flashcard-link { background: linear-gradient(135deg, #FF6B6B 0%, #C92A2A 100%); }
 
         .subject-card:nth-child(2) .subject-header { border-bottom-color: #4ECDC4; }
-        .subject-card:nth-child(2) .resource-link { background: linear-gradient(135deg, #4ECDC4 0%, #1098AD 100%); }
+        .subject-card:nth-child(2) .flashcard-link { background: linear-gradient(135deg, #4ECDC4 0%, #1098AD 100%); }
 
         .subject-card:nth-child(3) .subject-header { border-bottom-color: #95E1D3; }
-        .subject-card:nth-child(3) .resource-link { background: linear-gradient(135deg, #95E1D3 0%, #38A3A5 100%); }
+        .subject-card:nth-child(3) .flashcard-link { background: linear-gradient(135deg, #95E1D3 0%, #38A3A5 100%); }
 
         .subject-card:nth-child(4) .subject-header { border-bottom-color: #A8E6CF; }
-        .subject-card:nth-child(4) .resource-link { background: linear-gradient(135deg, #A8E6CF 0%, #56AB91 100%); }
+        .subject-card:nth-child(4) .flashcard-link { background: linear-gradient(135deg, #A8E6CF 0%, #56AB91 100%); }
 
         .subject-card:nth-child(5) .subject-header { border-bottom-color: #FFD93D; }
-        .subject-card:nth-child(5) .resource-link { background: linear-gradient(135deg, #FFD93D 0%, #F4A261 100%); }
+        .subject-card:nth-child(5) .flashcard-link { background: linear-gradient(135deg, #FFD93D 0%, #F4A261 100%); }
 
         .subject-card:nth-child(6) .subject-header { border-bottom-color: #6BCB77; }
-        .subject-card:nth-child(6) .resource-link { background: linear-gradient(135deg, #6BCB77 0%, #2D6A4F 100%); }
+        .subject-card:nth-child(6) .flashcard-link { background: linear-gradient(135deg, #6BCB77 0%, #2D6A4F 100%); }
+        .subject-card:nth-child(6) .practice-link { background: linear-gradient(135deg, #4CAF50 0%, #2E7D32 100%); }
 
         .subject-card:nth-child(7) .subject-header { border-bottom-color: #4D96FF; }
-        .subject-card:nth-child(7) .resource-link { background: linear-gradient(135deg, #4D96FF 0%, #1E40AF 100%); }
+        .subject-card:nth-child(7) .flashcard-link { background: linear-gradient(135deg, #4D96FF 0%, #1E40AF 100%); }
 
         .subject-card:nth-child(8) .subject-header { border-bottom-color: #9D84B7; }
-        .subject-card:nth-child(8) .resource-link { background: linear-gradient(135deg, #9D84B7 0%, #6B4E9B 100%); }
+        .subject-card:nth-child(8) .flashcard-link { background: linear-gradient(135deg, #9D84B7 0%, #6B4E9B 100%); }
 
         .subject-card:nth-child(9) .subject-header { border-bottom-color: #F48FB1; }
-        .subject-card:nth-child(9) .resource-link { background: linear-gradient(135deg, #F48FB1 0%, #C2185B 100%); }
+        .subject-card:nth-child(9) .flashcard-link { background: linear-gradient(135deg, #F48FB1 0%, #C2185B 100%); }
 
         .subject-card:nth-child(10) .subject-header { border-bottom-color: #FF8C94; }
-        .subject-card:nth-child(10) .resource-link { background: linear-gradient(135deg, #FF8C94 0%, #D65A5A 100%); }
+        .subject-card:nth-child(10) .flashcard-link { background: linear-gradient(135deg, #FF8C94 0%, #D65A5A 100%); }
 
         .subject-card:nth-child(11) .subject-header { border-bottom-color: #A8DADC; }
-        .subject-card:nth-child(11) .resource-link { background: linear-gradient(135deg, #A8DADC 0%, #457B9D 100%); }
+        .subject-card:nth-child(11) .flashcard-link { background: linear-gradient(135deg, #A8DADC 0%, #457B9D 100%); }
     </style>
 </head>
 <body>
-        <div class="container">
-            <h1>📖 Sophia Eliades - 1D</h1>
-            </div>
-                <ul class="links-list">
-                    <li><a href="https://5tedes.github.io/important-dates/" class="resource-link" target="_blank" rel="noopener noreferrer">Important Dates</a></li>
-                </ul>
-            </div>
+    <div class="container">
+        <h1>📖 Sophia Eliades - 1D</h1>
+        
+        <!-- Important Dates Card (Centered) -->
+        <div class="important-dates-card">
+            <a href="https://5tedes.github.io/important-dates/" class="important-dates-link" target="_blank" rel="noopener noreferrer">Important Dates</a>
+        </div>
 
-    
         <div class="grid">
             <!-- History -->
             <div class="subject-card">
@@ -260,7 +372,7 @@
                     <h2 class="subject-title">History</h2>
                 </div>
                 <ul class="links-list">
-                    <li><a href="https://5tedes.github.io/history-flashcards/" class="resource-link" target="_blank" rel="noopener noreferrer">History Flashcards</a></li>
+                    <li><a href="https://5tedes.github.io/history-flashcards/" class="flashcard-link" target="_blank" rel="noopener noreferrer">Medieval England</a></li>
                 </ul>
             </div>
 
@@ -271,7 +383,7 @@
                     <h2 class="subject-title">Cyprus History</h2>
                 </div>
                 <ul class="links-list">
-                    <li><a href="https://5tedes.github.io/cyprus-history-flashcards/" class="resource-link" target="_blank" rel="noopener noreferrer">Cyprus History Flashcards</a></li>
+                    <li><a href="https://5tedes.github.io/cyprus-history-flashcards/" class="flashcard-link" target="_blank" rel="noopener noreferrer">Introduction</a></li>
                 </ul>
             </div>
 
@@ -282,7 +394,7 @@
                     <h2 class="subject-title">Science</h2>
                 </div>
                 <ul class="links-list">
-                    <li><a href="https://5tedes.github.io/Science-Term1/" class="resource-link" target="_blank" rel="noopener noreferrer">Cells, Symptoms</a></li>
+                    <li><a href="https://5tedes.github.io/Science-Term1/" class="flashcard-link" target="_blank" rel="noopener noreferrer">Cells, Symptoms</a></li>
                 </ul>
             </div>
 
@@ -315,9 +427,9 @@
                     <h2 class="subject-title">Maths</h2>
                 </div>
                 <ul class="links-list">
-                    <li><a href="https://5tedes.github.io/maths-flashcards/" class="resource-link" target="_blank" rel="noopener noreferrer">Fractions, Rounding</a></li>
-                    <li><a href="https://5tedes.github.io/maths-flashcards/pt1.html" class="resource-link" target="_blank" rel="noopener noreferrer">Practice Test</a></li>
-                    <li><a href="https://5tedes.github.io/maths-flashcards/algebra1.html" class="resource-link" target="_blank" rel="noopener noreferrer">Algebra Basics</a></li>
+                    <li><a href="https://5tedes.github.io/maths-flashcards/" class="flashcard-link" target="_blank" rel="noopener noreferrer">Fractions, Rounding</a></li>
+                    <li><a href="https://5tedes.github.io/maths-flashcards/algebra1.html" class="flashcard-link" target="_blank" rel="noopener noreferrer">Algebra Basics</a></li>
+                    <li><a href="https://5tedes.github.io/maths-flashcards/pt1.html" class="practice-link" target="_blank" rel="noopener noreferrer">Fractions, Rounding</a></li>
                 </ul>
             </div>
 
@@ -339,7 +451,7 @@
                     <h2 class="subject-title">English</h2>
                 </div>
                 <ul class="links-list">
-                    <li><a href="https://5tedes.github.io/English-Flashcards/" class="resource-link" target="_blank" rel="noopener noreferrer">Devices Flashcards</a></li>
+                    <li><a href="https://5tedes.github.io/English-Flashcards/" class="flashcard-link" target="_blank" rel="noopener noreferrer">Literary Devices</a></li>
                 </ul>
             </div>
 
@@ -359,7 +471,7 @@
                 <div class="subject-header">
                     <span class="subject-icon">🥐</span>
                     <h2 class="subject-title">French</h2>
-                  </div>
+                </div>
                 <ul class="links-list">
                     <li class="empty-state">No resources yet</li>
                 </ul>
@@ -372,7 +484,7 @@
                     <h2 class="subject-title">Music</h2>
                 </div>
                 <ul class="links-list">
-                    <li><a href="https://5tedes.github.io/Music-flashcards/" class="resource-link" target="_blank" rel="noopener noreferrer">Music Flashcards</a></li>
+                    <li><a href="https://5tedes.github.io/Music-flashcards/" class="flashcard-link" target="_blank" rel="noopener noreferrer">Music Theory</a></li>
                 </ul>
             </div>
         </div>
