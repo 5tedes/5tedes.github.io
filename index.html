@@ -121,6 +121,14 @@
             border-radius: 8px;
         }
 
+        /* Important Links Grid */
+        .important-links-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+            margin-bottom: 40px;
+        }
+
         /* Important Dates Card */
         .important-dates-card {
             background: linear-gradient(135deg, #ff6b6b 0%, #ee5a6f 100%);
@@ -128,7 +136,6 @@
             padding: 20px;
             box-shadow: 0 10px 30px rgba(0,0,0,0.3);
             transition: all 0.3s;
-            margin-bottom: 40px;
             text-align: center;
         }
 
@@ -158,6 +165,46 @@
 
         .important-dates-link::before {
             content: "📅";
+            margin-right: 10px;
+            font-size: 1.3em;
+        }
+
+        /* Exams Schedule Card */
+        .exams-schedule-card {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 15px;
+            padding: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            transition: all 0.3s;
+            text-align: center;
+        }
+
+        .exams-schedule-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.4);
+        }
+
+        .exams-schedule-link {
+            display: inline-flex;
+            align-items: center;
+            padding: 15px 30px;
+            background: white;
+            color: #333;
+            text-decoration: none;
+            border-radius: 10px;
+            font-weight: 700;
+            font-size: 1.3em;
+            transition: all 0.3s;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+        }
+
+        .exams-schedule-link:hover {
+            transform: scale(1.05);
+            box-shadow: 0 6px 15px rgba(0,0,0,0.3);
+        }
+
+        .exams-schedule-link::before {
+            content: "📝";
             margin-right: 10px;
             font-size: 1.3em;
         }
@@ -457,9 +504,14 @@
             </div>
         </div>
 
-        <!-- Important Dates Card (Centered) -->
-        <div class="important-dates-card">
-            <a href="https://5tedes.github.io/important-dates/" class="important-dates-link" target="_blank" rel="noopener noreferrer">Important Dates</a>
+        <!-- Important Links Cards -->
+        <div class="important-links-grid">
+            <div class="important-dates-card">
+                <a href="https://5tedes.github.io/important-dates/" class="important-dates-link" target="_blank" rel="noopener noreferrer">Important Dates</a>
+            </div>
+            <div class="exams-schedule-card">
+                <a href="https://5tedes.github.io/exams-schedule/" class="exams-schedule-link" target="_blank" rel="noopener noreferrer">Exams Schedule</a>
+            </div>
         </div>
 
         <div class="grid">
