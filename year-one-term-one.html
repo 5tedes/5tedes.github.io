@@ -493,24 +493,10 @@
     <div class="container">
         <h1>📖 Sophia Eliades - Year 1 - Term One</h1>
 
-        <!-- Coming Up Card -->
-        <div class="coming-up-card" id="comingUpCard">
-            <h2>
-                <span id="comingUpIcon">🎯</span>
-                <span id="comingUpTitle">Coming Up</span>
-            </h2>
-            <div class="coming-up-content" id="comingUpContent">
-                <div class="loading-events">Loading events...</div>
-            </div>
-        </div>
-
         <!-- Important Links Cards -->
         <div class="important-links-grid">
             <div class="important-dates-card">
                 <a href="https://5tedes.github.io/important-dates/" class="important-dates-link" target="_blank" rel="noopener noreferrer">Important Dates</a>
-            </div>
-            <div class="exams-schedule-card">
-                <a href="https://5tedes.github.io/exams-schedule/" class="exams-schedule-link" target="_blank" rel="noopener noreferrer">Exams Schedule</a>
             </div>
         </div>
 
@@ -669,141 +655,5 @@
             <p>View on <a href="https://github.com/5tedes" target="_blank" rel="noopener noreferrer">GitHub</a></p>
         </div>
     </div>
-
-    <script>
-        async function loadUpcomingEvents() {
-            try {
-                const response = await fetch('https://5tedes.github.io/important-dates/');
-                const pageHtml = await response.text();
-                const parser = new DOMParser();
-                const doc = parser.parseFromString(pageHtml, 'text/html');
-
-                const today = new Date();
-                const dayOfWeek = today.getDay(); // 0 = Sunday, 1 = Monday, ..., 6 = Saturday
-
-                let targetDates = [];
-                let titleText = '';
-                let iconEmoji = '';
-
-                // Determine what to show based on day of week
-                if (dayOfWeek === 0) { // Sunday - show the whole week
-                    titleText = 'This Week\'s Events';
-                    iconEmoji = '📅';
-                    // Get next 7 days
-                    for (let i = 1; i <= 7; i++) {
-                        const date = new Date(today);
-                        date.setDate(today.getDate() + i);
-                        targetDates.push(date);
-                    }
-                } else if (dayOfWeek === 5 || dayOfWeek === 6) { // Friday or Saturday - show Monday
-                    titleText = 'Coming Up Monday';
-                    iconEmoji = '📌';
-                    const daysUntilMonday = dayOfWeek === 5 ? 3 : 2;
-                    const monday = new Date(today);
-                    monday.setDate(today.getDate() + daysUntilMonday);
-                    targetDates.push(monday);
-                } else { // Weekdays - show tomorrow
-                    titleText = 'Coming Up Tomorrow';
-                    iconEmoji = '🎯';
-                    const tomorrow = new Date(today);
-                    tomorrow.setDate(today.getDate() + 1);
-                    targetDates.push(tomorrow);
-                }
-
-                // Update title and icon
-                document.getElementById('comingUpTitle').textContent = titleText;
-                document.getElementById('comingUpIcon').textContent = iconEmoji;
-
-                // Parse events from the table
-                const rows = doc.querySelectorAll('table tbody tr');
-                const eventsMap = new Map();
-
-                rows.forEach(row => {
-                    const dateCell = row.querySelector('.date');
-                    const eventCell = row.querySelectorAll('td')[1];
-
-                    if (dateCell && eventCell) {
-                        const dateText = dateCell.textContent.trim();
-                        const eventItems = eventCell.querySelectorAll('.event-item');
-
-                        const events = [];
-                        if (eventItems.length > 0) {
-                            eventItems.forEach(item => {
-                                events.push(item.textContent.trim().replace(/^[•\s]+/, ''));
-                            });
-                        } else {
-                            const eventText = eventCell.textContent.trim();
-                            if (eventText) {
-                                events.push(eventText.replace(/^[•\s]+/, ''));
-                            }
-                        }
-
-                        if (events.length > 0) {
-                            eventsMap.set(dateText, events);
-                        }
-                    }
-                });
-
-                // Display events
-                const contentDiv = document.getElementById('comingUpContent');
-                let hasEvents = false;
-                let displayHtml = '';
-
-                if (dayOfWeek === 0) { // Sunday - show week view
-                    displayHtml = '<div class="week-events-section">';
-                    targetDates.forEach(date => {
-                        const dayName = date.toLocaleDateString('en-US', { weekday: 'long' });
-                        const dateNum = date.getDate();
-                        const searchKey = `${dayName}, ${dateNum} November`;
-
-                        const events = eventsMap.get(searchKey);
-                        if (events && events.length > 0) {
-                            hasEvents = true;
-                            displayHtml += `
-                                <div class="week-day-group">
-                                    <div class="coming-up-date">${dayName}, ${dateNum} November</div>
-                                    <ul class="coming-up-events">
-                                        ${events.map(event => `<li>${event}</li>`).join('')}
-                                    </ul>
-                                </div>
-                            `;
-                        }
-                    });
-                    displayHtml += '</div>';
-                } else { // Single day view
-                    const targetDate = targetDates[0];
-                    const dayName = targetDate.toLocaleDateString('en-US', { weekday: 'long' });
-                    const dateNum = targetDate.getDate();
-                    const searchKey = `${dayName}, ${dateNum} November`;
-
-                    const events = eventsMap.get(searchKey);
-
-                    if (events && events.length > 0) {
-                        hasEvents = true;
-                        displayHtml = `
-                            <div class="coming-up-date">${dayName}, ${dateNum} November</div>
-                            <ul class="coming-up-events">
-                                ${events.map(event => `<li>${event}</li>`).join('')}
-                            </ul>
-                        `;
-                    }
-                }
-
-                if (!hasEvents) {
-                    displayHtml = '<div class="no-events">No events scheduled 🎉</div>';
-                }
-
-                contentDiv.innerHTML = displayHtml;
-
-            } catch (error) {
-                console.error('Error loading events:', error);
-                document.getElementById('comingUpContent').innerHTML =
-                    '<div class="no-events">Unable to load events. Please check the Important Dates page.</div>';
-            }
-        }
-
-        // Load events when page loads
-        window.addEventListener('DOMContentLoaded', loadUpcomingEvents);
-    </script>
 </body>
 </html>
