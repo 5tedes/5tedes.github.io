@@ -467,7 +467,7 @@
         <!-- Important Links Cards -->
         <div class="important-links-grid">
             <div class="important-dates-card">
-                <a href="https://5tedes.github.io/important-dates/" class="important-dates-link" target="_blank" rel="noopener noreferrer">Important Dates</a>
+                <a href="https://5tedes.github.io/tool-school-calendar/" class="important-dates-link" target="_blank" rel="noopener noreferrer">Important Dates</a>
             </div>
         </div>
 
@@ -601,7 +601,7 @@
                 Submit New Flashcards
             </h2>
             <p>Have new flashcards to add? Submit them here!</p>
-            <a href="https://5tedes.github.io/flashcard-tools/submit-flashcards.html" class="submission-link" target="_blank" rel="noopener noreferrer">
+            <a href="https://5tedes.github.io/tool-flashcard-creator/submit.html" class="submission-link" target="_blank" rel="noopener noreferrer">
                 Create Flashcard
             </a>
         </div>
@@ -615,7 +615,7 @@
     <script>
         async function loadUpcomingEvents() {
             try {
-                const response = await fetch('https://5tedes.github.io/important-dates/');
+                const response = await fetch('https://5tedes.github.io/tool-school-calendar/');
                 const pageHtml = await response.text();
                 const parser = new DOMParser();
                 const doc = parser.parseFromString(pageHtml, 'text/html');
