@@ -48,6 +48,15 @@
             margin-bottom: 50px;
         }
 
+        .year-heading {
+            color: white;
+            font-size: 1.8em;
+            font-weight: 600;
+            text-align: left;
+            margin-bottom: 20px;
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.3);
+        }
+
         .term-card {
             background: white;
             border-radius: 20px;
@@ -101,6 +110,15 @@
         }
 
 
+        .term-card.term-card-current {
+            background: linear-gradient(135deg, #d4fc79 0%, #96e6a1 100%);
+        }
+
+        .term-card.term-card-current .term-card-title,
+        .term-card.term-card-current .term-card-description {
+            color: #2d3748;
+        }
+
         .footer {
             text-align: center;
             color: white;
@@ -139,6 +157,16 @@
         <h1>📖 Sophia Eliades</h1>
         <p class="subtitle">Study Materials & Practice Resources</p>
 
+        <h2 class="year-heading">Year 2</h2>
+        <div class="terms-grid">
+            <a href="year-two-term-one.html" class="term-card term-card-current">
+                <div class="term-card-icon">🚀</div>
+                <h2 class="term-card-title">Year 2 - Term One</h2>
+                <p class="term-card-description">Current term materials and resources</p>
+            </a>
+        </div>
+
+        <h2 class="year-heading">Year 1</h2>
         <div class="terms-grid">
             <a href="year-one-term-one.html" class="term-card">
                 <div class="term-card-icon">📚</div>
@@ -149,9 +177,8 @@
             <a href="year-one-term-two.html" class="term-card">
                 <div class="term-card-icon">🎯</div>
                 <h2 class="term-card-title">Year 1 - Term Two</h2>
-                <p class="term-card-description">Current term materials and resources</p>
+                <p class="term-card-description">Past term materials and resources</p>
             </a>
-
         </div>
 
         <div class="footer">
